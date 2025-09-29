@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b0b0b;
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+.header_container {
+    background: #020226;
+    padding: 20px 0;
+    text-align: center;
+    
+}
+
+.head_logo img {
+    max-width: 300px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.head_logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Navegação */
+.nav_container {
+    background: linear-gradient(to right, #4d219e, #5f83de);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.nav_links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.nav_links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav_links a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.nav_links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav_links a:hover::after {
+    width: 80%;
+}
+
+/* Conteúdo principal */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.serie {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.serie::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #4d219e, #5f83de);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.serie:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7);
+}
+
+.serie:hover::before {
+    transform: scaleX(1);
+}
+
+.serie img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.serie:hover img {
+    transform: scale(1);
+}
+
+.serie h1, .serie h2 {
+    padding: 15px 20px 5px;
+    color: #e5e5e5;
+    font-size: 22px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.serie:hover h1, .serie:hover h2 {
+    color: #ffffff;
+}
+
+.serie p {
+    padding: 0 20px;
+    margin-bottom: 15px;
+    color: #b5b5b5;
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.serie:hover p {
+    color: #e5e5e5;
+}
+
+.leia-mais {
+    display: block;
+    text-align: center;
+    background: linear-gradient(to right, #4d219e, #5f83de);
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.leia-mais::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.leia-mais:hover {
+    background: linear-gradient(to right, #4d219e, #5e83dd);
+    letter-spacing: 1px;
+}
+
+.leia-mais:hover::before {
+    left: 10%;
+}
+
+/* Rodapé */
+footer {
+    background: linear-gradient(to right, #000000, #4d219e);
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    color: #999;
+    border-top: 1px solid #222;
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+    
+    .nav_links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .nav_links a {
+        width: 80%;
+        text-align: center;
+    }
+    
+    .head_logo img {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header_container {
+        padding: 15px 0;
+    }
+    
+    .head_logo img {
+        max-width: 200px;
+    }
+    
+    .nav_links a {
+        font-size: 16px;
+        padding: 6px 15px;
+    }
+    
+    .serie h1, .serie h2 {
+        font-size: 20px;
+    }
+    
+    .serie p {
+        font-size: 14px;
+    }
+}
